@@ -1,6 +1,6 @@
-.landing-card{
-    width: 250px;
-    height: 300px;
+.landing-card {
+    width: 220px;
+    height: 260px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,16 +9,36 @@
     border-radius: 10px;
 }
 
-.landing-card-header{
+.landing-card-header {
     width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.596);
-    overflow: hidden;;
+    overflow: hidden;
+    ;
 }
 
-.test{
+.test {
     width: 100%;
     height: 150px;
 }
+
+
+.bg-card-fire {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, red, orange, red, yellow, red, orange, red) padding-box,
+        linear-gradient(45deg, #ff0000, #ff9200a1) border-box;        
+}
+
+.bg-btn-fire {
+    background: linear-gradient(126deg, red, orange,)    
+}
+
+.ground{
+
+}
+
+.water {}
+
+.bug {}

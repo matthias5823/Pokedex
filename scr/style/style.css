@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    background-image: url(../assets/imgs/bg_pokemon2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    background-color: rgba(222, 184, 135, 0.705);
+}
+
+.content-card{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: rgba(128, 128, 128, 0.568);
+}
+
+footer{
+    width: 100%;
+    height: 75px;
+    background-color: rgba(165, 42, 42, 0.705);
+    position: absolute;
+    bottom: 0px;
+}

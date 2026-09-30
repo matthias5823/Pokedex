@@ -1,1 +1,4 @@
-let pokemons = []
+let pokemonsBasic = [];
+
+let pokemonSpecies = [];
+

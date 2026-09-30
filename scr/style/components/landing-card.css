@@ -22,8 +22,17 @@
 .test {
     width: 100%;
     height: 150px;
+    padding: 10px;
 }
 
+.type-mini-card{
+    display: flex;
+    gap: 10px;
+}
+
+.pic-types{
+    height: 50px;
+}
 
 .bg-card-fire {
     border: 4px solid transparent;

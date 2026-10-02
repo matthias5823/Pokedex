@@ -1,39 +1,58 @@
+dialog[open] {
+    padding: 0;
+}
+
+
 .overlay-card {
     width: 320px;
-    height: 480px;
+    height: 560px;
     display: flex;
     flex-direction: column;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 16px #00000026;
     background-color: antiquewhite;
+    border: 8px solid transparent;
+    background: linear-gradient(45deg, #686666, #afabab, #686666) border-box;
+    ;
 }
 
-.poke-id {
+.pokemon-id-section {
     height: 50px;
-    width: 50px;
+    width: 68px;
+    display: flex;
+    justify-content: center;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(95, 95, 95, 0.76);
-    border-radius: 50%;
-
+    border-radius: 30px 10px 20px 50px;
+    background: linear-gradient(45deg, #686666ab, #afababab, #686666ab);
+    align-items: center;
+    z-index: 1;
 }
 
 .overlay-card-header {
     width: 100%;
-    height: 100px;
+    height: 168px;
     display: flex;
-    line-height: 1.2rem;
-
+    flex-direction: row-reverse;
+    padding: 10px;
 }
 
-.card-pic {
-    width: 100px;
-    height: 100px;
+.overlay-card-pic {
+    width: 144px;
+    height: 144px;
     object-fit: cover;
+    padding: 10px 15px 0 0;
+    z-index: 0;
 }
 
+.overlay-card-types{
+
+}
+
+.overlay-card-type{
+    height: 50px;
+    background-color: #2563eB;
+}
 .tabs {
     display: flex;
 }
@@ -61,15 +80,20 @@
     display: block;
 }
 
-
-
-
-
+.content-card-section-header{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background:none;
+    gap: 20px;
+}
 
 .evolution-card-section {
+    width: 100%;
+    height: 200px;
     display: flex;
     justify-content: space-evenly;
-    align-items: baseline;
+    align-items: center;
 }
 
 
@@ -80,8 +104,8 @@
 }
 
 .evolution-pic {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
 }
 
@@ -92,11 +116,12 @@
     transform: rotate(90deg);
 }
 
-.navigation-picture{
+.navigation-picture {
     width: 100%;
     height: 50px;
     display: flex;
     justify-content: space-evenly;
-    background: rgba(235, 162, 5, 0.89);
+    align-items: center;
+    background: rgba(231, 159, 4, 0.603);
     border-radius: 50px;
 }

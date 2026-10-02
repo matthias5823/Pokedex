@@ -1,0 +1,194 @@
+/* ########## normal ############################################# */
+
+.bg-btn-normal {
+    background: linear-gradient(126deg, var(--normal), orange,)    
+}
+
+.bg-card-normal {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--normal), #ffa500, var(--normal), yellow, var(--normal), orange, var(--normal)) padding-box,
+        linear-gradient(45deg, var(--normal), #ff9200a1) border-box;        
+}
+
+/* ############# fire ########################################## */
+
+.bg-card-fire {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--fire), #ffa500, var(--fire), yellow, var(--fire), orange, var(--fire)) padding-box,
+        linear-gradient(45deg, var(--fire), #ff9200a1) border-box;        
+}
+
+.bg-btn-fire {
+    background: linear-gradient(126deg, var(--fire), orange,)    
+}
+
+/* ############## water ######################################### */
+
+.bg-card-water {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--water), #ffa500, var(--water), yellow, var(--water), orange, var(--water)) padding-box,
+        linear-gradient(45deg, #ff0000, #ff9200a1) border-box;        
+}
+
+.bg-btn-bug {
+    background: linear-gradient(126deg, var(--water), orange,)    
+}
+
+/* ############# grass ########################################## */
+.bg-card-grass {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--grass), #d8d8d8fd, var(--grass) , var(--grass) , #d8d8d8fd, var(--grass)) padding-box,
+        linear-gradient(45deg, var(--grass), #ff9200a1) border-box;        
+}
+
+.bg-btn-grass {
+    background: linear-gradient(126deg, var(--grass), orange,)    
+}
+/* ####################################################### */
+
+.bg-card-bug {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--bug), #ffa500, var(--bug), yellow, var(--bug), orange, var(--bug)) padding-box,
+        linear-gradient(45deg, #ff0000, #ff9200a1) border-box;        
+}
+
+.bg-btn-bug {
+    background: linear-gradient(126deg, var(--bug), orange,)    
+}
+
+/* ####################################################### */
+.bg-card-dark {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--dark), #ffa500, var(--dark), yellow, var(--dark), orange, var(--dark)) padding-box,
+        linear-gradient(45deg, var(--dark), #ff9200a1) border-box;        
+}
+
+.bg-btn-dark {
+    background: linear-gradient(126deg, var(--dark), orange,)    
+}
+
+/* ####################################################### */
+.bg-card-dragon {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--dragon), #ffa500, var(--dragon), yellow, var(--dragon), orange, var(--dragon)) padding-box,
+        linear-gradient(45deg, var(--dragon), #ff9200a1) border-box;        
+}
+
+.bg-btn-dragon {
+    background: linear-gradient(126deg, var(--dragon), orange,)    
+}
+
+/* ####################################################### */
+.bg-card-electric {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--electric), #ffa500, var(--electric), yellow, var(--electric), orange, var(--electric)) padding-box,
+        linear-gradient(45deg, var(--electric), #ff9200a1) border-box;        
+}
+
+.bg-btn-electric {
+    background: linear-gradient(126deg, var(--electric), orange,)    
+}
+
+/* ####################################################### */
+.bg-card-fairy {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--fairy), #ffa500, var(--fairy), yellow, var(--fairy), orange, var(--fairy)) padding-box,
+        linear-gradient(45deg, var(--fairy), #ff9200a1) border-box;        
+}
+
+.bg-btn-fairy {
+    background: linear-gradient(126deg, var(--fairy), orange,)    
+}
+
+/* ####################################################### */
+
+.bg-card-flying {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--flying), #ffa500, var(--flying), yellow, var(--flying), orange, var(--flying)) padding-box,
+        linear-gradient(45deg, var(--flying), #ff9200a1) border-box;        
+}
+
+.bg-btn-flying {
+    background: linear-gradient(126deg, var(--flying), orange,)    
+}
+
+/* ####################################################### */
+.bg-card-ghost {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--ghost), #ffa500, var(--ghost), yellow, var(--ghost), orange, var(--ghost)) padding-box,
+        linear-gradient(45deg, var(--ghost), #ff9200a1) border-box;        
+}
+
+.bg-btn-ghost {
+    background: linear-gradient(126deg, var(--ghost), orange,)    
+}
+
+
+
+/* ####################################################### */
+.bg-card-ground {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--ground), #ffa500, var(--ground), yellow, var(--ground), orange, var(--ground)) padding-box,
+        linear-gradient(45deg, var(--ground), #ff9200a1) border-box;        
+}
+
+.bg-btn-ground {
+    background: linear-gradient(126deg, var(--ground), orange,)    
+}
+
+/* ####################################################### */
+.bg-card-ice {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--ice), #ffa500, var(--ice), yellow, var(--ice), orange, var(--ice)) padding-box,
+        linear-gradient(45deg, var(--ice), #ff9200a1) border-box;        
+}
+
+.bg-btn-ice {
+    background: linear-gradient(126deg, var(--ice), orange,)    
+}
+
+/* ####################################################### */
+
+.bg-btn-poison {
+    background: linear-gradient(126deg, var(--poison), orange,)    
+}
+
+.bg-card-poison {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--poison), #ffa500, var(--poison), yellow, var(--poison), orange, var(--poison)) padding-box,
+        linear-gradient(45deg, var(--poison), #ff9200a1) border-box;        
+}
+
+/* ####################################################### */
+.bg-btn-psychic {
+    background: linear-gradient(126deg, var(--psychic), orange,)    
+}
+
+.bg-card-psychic {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--psychic), #ffa500, var(--psychic), yellow, var(--psychic), orange, var(--psychic)) padding-box,
+        linear-gradient(45deg, var(--psychic), #ff9200a1) border-box;        
+}
+
+/* ####################################################### */
+.bg-btn-rock {
+    background: linear-gradient(126deg, var(--rock), orange,)    
+}
+
+.bg-card-rock {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--rock), #ffa500, var(--rock), yellow, var(--rock), orange, var(--rock)) padding-box,
+        linear-gradient(45deg, var(--rock), #ff9200a1) border-box;        
+}
+
+/* ####################################################### */
+.bg-btn-steel {
+    background: linear-gradient(126deg, var(--steel), orange,)    
+}
+
+.bg-card-steel {
+    border: 4px solid transparent;
+    background: linear-gradient(126deg, var(--steel), #ffa500, var(--steel), yellow, var(--steel), orange, var(--steel)) padding-box,
+        linear-gradient(45deg, var(--steel), #ff9200a1) border-box;        
+}
+

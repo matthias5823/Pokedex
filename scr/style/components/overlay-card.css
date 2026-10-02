@@ -1,0 +1,102 @@
+.overlay-card {
+    width: 320px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px #00000026;
+    background-color: antiquewhite;
+}
+
+.poke-id {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(95, 95, 95, 0.76);
+    border-radius: 50%;
+
+}
+
+.overlay-card-header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    line-height: 1.2rem;
+
+}
+
+.card-pic {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.tabs {
+    display: flex;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab.activ {
+    border-bottom-color: #2563eB;
+    font-weight: bold;
+}
+
+.content-card-section {
+    display: none;
+    padding: 16px;
+}
+
+.content-card-section.activ {
+    display: block;
+}
+
+
+
+
+
+
+.evolution-card-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+
+.evolution-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.evolution-pic {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.next-evolution {
+    width: 25px;
+    height: 25px;
+    fill: black;
+    transform: rotate(90deg);
+}
+
+.navigation-picture{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    background: rgba(235, 162, 5, 0.89);
+    border-radius: 50px;
+}

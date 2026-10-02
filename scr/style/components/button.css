@@ -1,0 +1,33 @@
+button {
+    background: transparent;
+    border: none;    
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateX( 2px);
+}
+
+button:active {
+    transform: translateX(0px);
+}
+
+/* ######################################################################################### */
+/* ###########################       OVERLAY BUTTON      ################################### */
+/* ######################################################################################### */
+
+.btn-forward{
+    width: 25px;
+    height: 25px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill-rule: evenodd;
+    fill: none;
+    stroke: none;
+    stroke-width: 1px;
+    background: rgba(128, 128, 128, 0.76);
+    border-radius: 50%;
+    padding: 5px;
+
+}

@@ -1,6 +1,6 @@
-function renderMiniCard(indexPokemons, name, scrPic) {
+function renderMiniCard(indexPokemons, name, scrPic, typeName) {
     return `
-        <article id="landing_card" class="landing-card" onclick="${indexPokemons}">
+        <article id="landing_card" class="landing-card bg-card-${typeName}" onclick="openDialog(${indexPokemons})">
         <img class="test" src="${scrPic}" alt="Pokemonbild von ${name}">
         <header class="landing-card-header">
             <H2>${name}</H2>
@@ -16,3 +16,4 @@ function renderTypes(typeName) {
     <img class="pic-types" src="./scr/assets/icons/${typeName}.svg" alt="icon des Typ ${typeName}">
     `
 }
+

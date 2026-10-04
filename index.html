@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./scr/style/components/variables.css">
     <link rel="stylesheet" href="./scr/style/style.css">
     <link rel="stylesheet" href="./scr/style/components/landing-card.css">
+    <link rel="stylesheet" href="./scr/style/components/overlay-card.css">
+    <link rel="stylesheet" href="./scr/style/components/button.css">
+    <link rel="stylesheet" href="./scr/style/components/backround-card.css">
     <script src="./scr/js/temp/miniCard.js" defer></script>
+    <script src="./scr/js/temp/overlayCard.js" defer></script>
     <script src="./scr/js/db/Pokemons.js" defer></script>
     <script src="./scr/js/script.js" defer></script>
 
@@ -16,13 +21,19 @@
 <body onload="init()">
 
     <header>
+        <div>
 
+        </div>
+        <input type="text" placeholder="🔎 Name oder ID">
     </header>
 
     <main id="contnet_card" class="content-card">
 
     </main>
 
+    <dialog id="dialog_card" class="overlay-card" closedby="any"></dialog>
+
+<button onclick="startUpload ()">die nächsten bitte</button>
     <footer>
 
     </footer>

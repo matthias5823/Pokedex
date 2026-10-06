@@ -1,23 +1,109 @@
 button {
     background: transparent;
-    border: none;    
+    border: none;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 button:hover {
-    transform: translateX( 2px);
+    transform: translateY(2px);
 }
 
 button:active {
-    transform: translateX(0px);
+    transform: translateY(0px);
 }
+
+/* ######################################################################################### */
+/* ###########################         input search      ################################### */
+/* ######################################################################################### */
+
+input[type="search"] {
+    width: min(100%, 320px);
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    font: inherit;
+    border: 1px solid #3a3f4b;
+    border-radius: 8px;
+    background: #10121a9a;
+    color: #e8e9ec;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+input[type="search"]:focus {
+    border-color: #5b9dff;
+    box-shadow: 0 0 0 3px rgba(91, 157, 255, .25);
+}
+
+input[type="search"]::placeholder {
+    color: #b3b4b6;
+}
+
+body>button {
+    min-height: 44px;
+    max-width: calc(100% - 24px);
+    padding: 12px 24px;
+}
+
 
 /* ######################################################################################### */
 /* ###########################       OVERLAY BUTTON      ################################### */
 /* ######################################################################################### */
 
-.btn-forward{
+.tab {
+    flex: 1;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 4px;
+    overflow-wrap: anywhere;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid #ddddddcb;
+}
+
+.tab.activ {
+    border-bottom-color: #2563eB;
+    background-color: #e8eb255e;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+}
+
+.content-card-section {
+    display: none;
+    padding: 10px;
+}
+
+.content-card-section.activ {
+    display: block;
+}
+
+.load-pokemons-button {
+  position: relative;
+  overflow: hidden;
+  background: #d9dde6da;
+  color: black;
+  border-radius: 25px;
+}
+
+.load-pokemons-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+  transform: skewX(-25deg);
+  transition: left 0.4s ease;
+}
+
+.load-pokemons-button:hover::after {
+  left: 125%;
+}
+
+.btn-forward {
     width: 25px;
     height: 25px;
     stroke-linejoin: round;
@@ -29,5 +115,5 @@ button:active {
     background: rgba(128, 128, 128, 0.76);
     border-radius: 50%;
     padding: 5px;
-
 }
+

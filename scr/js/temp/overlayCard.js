@@ -1,4 +1,4 @@
-function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, nextName, typeName) {
+function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, nextName, typeName, height, weight) {
     return `    
         
             <header class="overlay-card-header bg-card-${typeName}">
@@ -12,13 +12,13 @@ function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, 
                     <p>${nameDe}</p>
                 </div>
             </header>
-            <nav class="tabs" role="tablist">
-                <button role="tab" class="tab activ" data-ziel="description">Beschreibung</button>
-                <button role="tab" class="tab " data-ziel="basic_values">Basiswerte</button>
-                <button role="tab" class="tab " data-ziel="evolution">Entwicklung</button>
+            <nav class="tabs" role="tablist" aria-label="Pokémon-Informationen">
+                <button id="tab_description" role="tab" class="tab activ" data-ziel="description" aria-controls="description" aria-selected="true">Beschreibung</button>
+                <button id="tab_basic_values" role="tab" class="tab " data-ziel="basic_values" aria-controls="basic_values" aria-selected="false">Basiswerte</button>
+                <button id="tab_evolution" role="tab" class="tab " data-ziel="evolution" aria-controls="evolution" aria-selected="false">Entwicklung</button>
             </nav>
             <section>
-                <section id="description" class="content-card-section activ">
+                <section id="description" class="content-card-section activ" role="tabpanel" aria-labelledby="tab_description">
                     <header class="content-card-section-header">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -37,7 +37,7 @@ function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, 
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M6,4.70710678 L3.85355339,6.85355339 C3.65829124,7.04881554 3.34170876,7.04881554 3.14644661,6.85355339 C2.95118446,6.65829124 2.95118446,6.34170876 3.14644661,6.14644661 L6.14644661,3.14644661 C6.34170876,2.95118446 6.65829124,2.95118446 6.85355339,3.14644661 L9.85355339,6.14644661 C10.0488155,6.34170876 10.0488155,6.65829124 9.85355339,6.85355339 C9.65829124,7.04881554 9.34170876,7.04881554 9.14644661,6.85355339 L7,4.70710678 L7,19.2928932 L9.14644661,17.1464466 C9.34170876,16.9511845 9.65829124,16.9511845 9.85355339,17.1464466 C10.0488155,17.3417088 10.0488155,17.6582912 9.85355339,17.8535534 L6.85355339,20.8535534 C6.65829124,21.0488155 6.34170876,21.0488155 6.14644661,20.8535534 L3.14644661,17.8535534 C2.95118446,17.6582912 2.95118446,17.3417088 3.14644661,17.1464466 C3.34170876,16.9511845 3.65829124,16.9511845 3.85355339,17.1464466 L6,19.2928932 L6,4.70710678 Z M18.5,3 C19.8807119,3 21,4.11928813 21,5.5 L21,18.5 C21,19.8807119 19.8807119,21 18.5,21 L15.5,21 C14.1192881,21 13,19.8807119 13,18.5 L13,5.5 C13,4.11928813 14.1192881,3 15.5,3 L18.5,3 Z M18.5,4 L15.5,4 C14.6715729,4 14,4.67157288 14,5.5 L14,18.5 C14,19.3284271 14.6715729,20 15.5,20 L18.5,20 C19.3284271,20 20,19.3284271 20,18.5 L20,5.5 C20,4.67157288 19.3284271,4 18.5,4 Z" />
-                                    </svg></span><span>0.7 m</span></p>
+                                    </svg></span><span>     ${height} m</span></p>
                         </div>
                         <div>
                             <p><span><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
@@ -48,14 +48,14 @@ function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, 
                                         <path
                                             d="M17.5 7.99997C14.37 5.20997 9.63998 5.20997 6.49998 7.99997C6.35998 8.12997 6.32998 8.32997 6.42998 8.47997L8.60998 11.98C8.66998 12.07 8.76998 12.14 8.86998 12.15C8.97998 12.17 9.08998 12.13 9.16998 12.06C10.78 10.63 13.2 10.63 14.81 12.06C14.88 12.12 14.97 12.15 15.06 12.15C15.08 12.15 15.1 12.15 15.11 12.15C15.22 12.13 15.32 12.07 15.37 11.98L17.55 8.47997C17.67 8.32997 17.64 8.12997 17.5 7.99997Z"
                                             fill="#292D32" />
-                                    </svg></span><span>6.9 kg</span></p>
+                                    </svg></span><span>     ${weight} kg</span></p>
                         </div>
 
                     </section>
 
                 </section>
 
-                <section id="basic_values" class="content-card-section">
+                <section id="basic_values" class="content-card-section" role="tabpanel" aria-labelledby="tab_basic_values">
                     <header class="content-card-section-header">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -68,54 +68,11 @@ function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, 
                         <h3>Basiswerte</h3>
                     </header>
                     <section id="basicvalues_card_section" class="basicvalues-card-section">
-                        <div class="basicvalues-card-content">
-                            <p>HP</p>
-                            <p>45</p>
-                            <div class="basicvalues-bg-line">
-                                <div class="basicvalues-hp-line"></div>
-                            </div>
-                        </div>
-                        <div class="basicvalues-card-content">
-                            <p>Attack</p>
-                            <p>49</p>
-                            <div class="basicvalues-bg-line">
-                                <div class="basicvalues-attack-line"></div>
-                            </div>
-                        </div>
-                        <div class="basicvalues-card-content">
-                            <p>Defense</p>
-                            <p>49</p>
-                            <div class="basicvalues-bg-line">
-                                <div class="basicvalues-attack-line"></div>
-                            </div>
-                        </div>
-                        <div class="basicvalues-card-content">
-                            <p>Sp. Atk</p>
-                            <p>49</p>
-                            <div class="basicvalues-bg-line">
-                                <div class="basicvalues-attack-line"></div>
-                            </div>
-                        </div>
-                        <div class="basicvalues-card-content">
-                            <p>Sp. Def</p>
-                            <p>49</p>
-                            <div class="basicvalues-bg-line">
-                                <div class="basicvalues-attack-line"></div>
-                            </div>
-                        </div>
-                        <div class="basicvalues-card-content">
-                            <p>Speed</p>
-                            <p>49</p>
-                            <div class="basicvalues-bg-line">
-                                <div class="basicvalues-attack-line"></div>
-                            </div>
-                        </div>
-
                     </section>
 
                 </section>
 
-                <section id="evolution" class="content-card-section ">
+                <section id="evolution" class="content-card-section " role="tabpanel" aria-labelledby="tab_evolution">
                     <header class="content-card-section-header">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -128,48 +85,16 @@ function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, 
                         </svg>
                         <h3>Entwicklung</h3>
                     </header>
-                    <section class="evolution-card-section">
-                        <div class="evolution-card-content">
-                            <img class="evolution-pic"
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
-                                alt="">
-                            <p>Bulbasaur</p>
-                            <p>level</p>
-                        </div>
+                    <section id="evolution_steps" class="evolution-card-section">
 
-                        <svg class="next-evolution" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M256 29.816l-231 154v106.368l231-154 231 154V183.816zm0 128.043L105 259.783v90.283l151-101.925 151 101.925v-90.283zm0 112l-87 58.725v67.6l87-58 87 58v-67.6zm0 89.957l-87 58v64.368l87-58 87 58v-64.368z" />
-                        </svg>
-
-                        <div class="evolution-card-content">
-                            <img class="evolution-pic"
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
-                                alt="">
-                            <p>Ivysaur</p>
-                            <p>Level 16</p>
-                        </div>
-
-                        <svg class="next-evolution" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M256 29.816l-231 154v106.368l231-154 231 154V183.816zm0 128.043L105 259.783v90.283l151-101.925 151 101.925v-90.283zm0 112l-87 58.725v67.6l87-58 87 58v-67.6zm0 89.957l-87 58v64.368l87-58 87 58v-64.368z" />
-                        </svg>
-
-                        <div class="evolution-card-content">
-                            <img class="evolution-pic"
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
-                                alt="">
-                            <p>Venusaur</p>
-                            <p>Level 32</p>
-                        </div>
                     </section>
 
 
                 </section>
             </section>
 
-            <div class="navigation-picture">
-                <button aria-label="vorheriges Pokemon" onclick="lastPokemon(${indexPokemons})"><svg class="btn-forward" viewBox="-4 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            <div class="navigation-picture bg-btn-${typeName}">
+                <button aria-label="Vorheriges Pokémon: ${lastName}" onclick="lastPokemon(${indexPokemons})"><svg aria-hidden="true" class="btn-forward" viewBox="-4 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Free-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -182,8 +107,8 @@ function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, 
                             </g>
                         </g>
                     </svg></button>
-                <p><span>${lastName}</span> / <span>${nextName}</span></p>
-                <button aria-label="nächstes Pokemon" onclick="nextPokemon(${indexPokemons})"><svg class="btn-forward" viewBox="-4 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                <p><span class="btn-last-name">${lastName}</span>  <span class="btn-next-name">${nextName}</span></p>
+                <button aria-label="Nächstes Pokémon: ${nextName}" onclick="nextPokemon(${indexPokemons})"><svg aria-hidden="true" class="btn-forward" viewBox="-4 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Free-Icons" stroke="none" stroke-width="1" fill="none">
                             <g transform="translate(-751.000000, -674.000000)" id="Group" stroke="#000000" stroke-width="2">
@@ -197,4 +122,26 @@ function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, 
                     </svg></button>
             </div>
         `;
+}
+
+function renderStats(statName, statPoint){
+    return `
+            <div class="basicvalues-card-content">
+                <p class="basicvalues-content">${statName}:<span class="basicvalues-value"> ${statPoint}</span></p>
+                <div class="basicvalues-bg-line">
+                    <div class="basicvalues-${statName}-line" style="width: ${statPoint}%"></div>
+                </div>
+            </div>
+    `
+}
+
+function renderEvolutionCard(name, picture, levelText) {
+    return `
+        <div class="evolution-card-content">
+            <img class="evolution-pic"
+                src="${picture}" alt="${name}">
+            <p>${name}</p>
+            <p>${levelText}</p>
+        </div>
+    `;
 }

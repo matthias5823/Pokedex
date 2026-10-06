@@ -9,6 +9,7 @@
 
 .landing-card:hover{
     cursor: pointer;
+    box-shadow: 0 0 16px 3px yellow;    
 }
 
 .landing-card-header {
@@ -17,7 +18,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.596);
+    background-color: rgba(0, 0, 0, 0.342);
     overflow: hidden;
     align-items: center;
     padding: 0 8px;

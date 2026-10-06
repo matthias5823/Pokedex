@@ -110,6 +110,44 @@ async function loadEvuloutions() {
     };
 }
 
+function getDescriptionHeight(indexPokemons) {
+    let height = pokemonsBasic[indexPokemons].height;
+    height = height / 10;
+    return height;  
+}
+
+function getDescriptionWeight(indexPokemons) {
+    let weight = pokemonsBasic[indexPokemons].weight;
+    weight = weight / 10;
+    return weight;  
+}
+
+// Gibt die Pokémon-ID zurück. indexPokemons ist die Position in der Liste, nicht die ID selbst.
+function addedPokemonId(indexPokemons) {
+    return pokemonsBasic[indexPokemons]['id'];
+}
+
+// Gibt den englischen Namen des Pokémon an dieser Listenposition zurück.
+function addedPokemonNameEn(indexPokemons) {
+    return pokemonsBasic[indexPokemons]['name'];
+}
+
+// Liest den Namen aus dem sechsten Eintrag der Namensliste (Arrays beginnen bei 0).
+// Hier wird vorausgesetzt, dass names[5] den deutschen Namen enthält.
+function addedPokemonNameDe(indexPokemons) {
+    return pokemonSpecies[indexPokemons].names[5].name;
+}
+
+// Liest den Namen des ersten Typs aus. Dieser wird zum Beispiel für die Kartenfarbe benutzt.
+function addedFirstTyp(indexPokemons) {
+    return pokemonsBasic[indexPokemons].types[0].type.name;
+}
+
+// Gibt die Bild-URL aus dem Bereich dream_world der Pokémon-Daten zurück.
+function addedScrPic(indexPokemons) {
+    return pokemonsBasic[indexPokemons].sprites.other.dream_world.front_default;
+}
+
 // Sammelt die Entwicklungs-URLs der geladenen Pokémon, ohne dieselbe URL doppelt einzutragen.
 function addedEvuloutionsChain() {
     for (let iPokemonSpecies = 0; iPokemonSpecies < pokemonSpecies.length; iPokemonSpecies++) {
@@ -202,31 +240,7 @@ function addMiniCard(pokemonsSearch = pokemonsBasic) {
     }
 }
 
-// Gibt die Pokémon-ID zurück. indexPokemons ist die Position in der Liste, nicht die ID selbst.
-function addedPokemonId(indexPokemons) {
-    return pokemonsBasic[indexPokemons]['id'];
-}
 
-// Gibt den englischen Namen des Pokémon an dieser Listenposition zurück.
-function addedPokemonNameEn(indexPokemons) {
-    return pokemonsBasic[indexPokemons]['name'];
-}
-
-// Liest den Namen aus dem sechsten Eintrag der Namensliste (Arrays beginnen bei 0).
-// Hier wird vorausgesetzt, dass names[5] den deutschen Namen enthält.
-function addedPokemonNameDe(indexPokemons) {
-    return pokemonSpecies[indexPokemons].names[5].name;
-}
-
-// Liest den Namen des ersten Typs aus. Dieser wird zum Beispiel für die Kartenfarbe benutzt.
-function addedFirstTyp(indexPokemons) {
-    return pokemonsBasic[indexPokemons].types[0].type.name;
-}
-
-// Gibt die Bild-URL aus dem Bereich dream_world der Pokémon-Daten zurück.
-function addedScrPic(indexPokemons) {
-    return pokemonsBasic[indexPokemons].sprites.other.dream_world.front_default;
-}
 
 // Fügt für jeden Typ eines Pokémon ein Typenbild in seine Karte ein.
 function addedType(indexPokemons) {
@@ -248,16 +262,17 @@ function initDialogTabs() {
         const actuellTab = tabs[iTabs];
         // Der Code innerhalb dieses Listeners läuft erst, wenn der Reiter angeklickt wird.
         actuellTab.addEventListener("click", function () {
-            // Soll die alte Markierung entfernen. Achtung: Hier müsste a < tabs.length stehen.
-            // Mit a > tabs.length startet diese Schleife nicht.
-            for (let a = 0; a > tabs.length; a++) {
+            // Entfernt die Markierung und meldet Screenreadern, dass die anderen Reiter nicht ausgewählt sind.
+            for (let a = 0; a < tabs.length; a++) {
                 tabs[a].classList.remove("activ");
+                tabs[a].setAttribute("aria-selected", "false");
             };
             // Versteckt alle Inhaltsbereiche, indem die Klasse activ entfernt wird.
             for (let b = 0; b < tabContent.length; b++) {
                 tabContent[b].classList.remove("activ");
             };
             actuellTab.classList.add("activ");
+            actuellTab.setAttribute("aria-selected", "true");
             // dataset.ziel liest data-ziel aus dem Button, zum Beispiel 'basic_values'.
             const zielId = actuellTab.dataset.ziel;
             const zielElement = document.getElementById(zielId);
@@ -279,21 +294,25 @@ function openDialog(indexPokemons) {
     let lastName = lastPokemonName(indexPokemons);
     let nextName = nextPokemonName(indexPokemons);
     let typeName = addedFirstTyp(indexPokemons);
-
+    let height = getDescriptionHeight(indexPokemons);
+    let weight = getDescriptionWeight(indexPokemons);
     // Erst den Dialoginhalt erstellen, dann öffnen und die neuen Reiter mit Klick-Listenern versehen.
-    dialog.innerHTML = renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, nextName, typeName);
+    dialog.innerHTML = renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, nextName, typeName, height, weight);
+    // Benennt den Dialog für Screenreader mit dem aktuell geöffneten Pokémon.
+    dialog.setAttribute("aria-label", `Details zu ${nameEn} (${nameDe})`);
     dialog.showModal();
     initDialogTabs();
+    getStats(indexPokemons);
+    showPokemonEvolution(indexPokemons);
 }
 
 // Gibt die Namen und Zahlenwerte der Basiswerte in der Konsole aus.
-// Aktuell wird immer das erste geladene Pokémon verwendet, weil hier überall [0] steht.
-function getStats() {
-    const pokName = pokemonsBasic[0].name;
-    for (let iStats = 0; iStats < pokemonsBasic[0]['stats'].length; iStats++) {
-        let statName = pokemonsBasic[0]['stats'][iStats]['stat'].name;
-        let statPoint = pokemonsBasic[0]['stats'][iStats].base_stat;
-        console.log(`${pokName} ,  ${statName}: ${statPoint}`);
+function getStats(indexPokemons) {
+    const statsSectionRef = document.getElementById('basicvalues_card_section');
+    for (let iStats = 0; iStats < pokemonsBasic[indexPokemons]['stats'].length; iStats++) {
+        let statName = pokemonsBasic[indexPokemons]['stats'][iStats]['stat'].name;
+        let statPoint = pokemonsBasic[indexPokemons]['stats'][iStats].base_stat;
+        statsSectionRef.innerHTML += renderStats(statName, statPoint );
     }
 }
 
@@ -343,7 +362,7 @@ function nextPokemonName(indexPokemons) {
 }
 
 // Liest die Entwicklungs-ID aus der URL des ersten geladenen Pokémon.
-function getEvuloutionsId(){
+function getEvuloutionsId(indexPokemons){
     let path = pokemonSpecies[0]['evolution_chain'].url;
     // split teilt die URL an jedem /. Wegen des letzten / steht die ID im vorletzten Teil.
     // at(-2) holt diesen Teil. Number wandelt ihn von Text in eine Zahl um.
@@ -353,14 +372,110 @@ function getEvuloutionsId(){
     return indexEvulouten -1;
 }
 
+// Gibt die passende Entwicklungskette für das ausgewählte Pokémon zurück.
+async function getPokemonEvolution(indexPokemons) {
+    // Wichtig: indexPokemons verwenden, damit nicht immer das erste Pokémon gewählt wird.
+    let path = pokemonSpecies[indexPokemons].evolution_chain.url;
 
+    // Beispiel: Aus ".../evolution-chain/1/" wird die Zahl 1.
+    let evolutionId = Number(path.split("/").at(-2));
 
-// Beispiele für den Zugriff nach dem Laden der Daten:
-// pokemonsTypes[0].sprites['generation-viii']['legends-arceus'].name_icon
-// pokemonsBasic[0]['stats'].length
-// pokemonsBasic[0]['stats'][0].base_stat
-// pokemonsBasic[0]['stats'][0]['stat'].name
+    // Sucht die Kette anhand ihrer ID in den bereits geladenen Daten.
+    let evolution = pokemonsEvuloutions.find(evolution =>
+        evolution.id === evolutionId
+    );
 
-// pokemonsEvuloutions[0]['chain']['species'].name
-// pokemonsEvuloutions[0]['chain']['evolves_to'][0]['species'].name
-// pokemonsEvuloutions[0]['chain']['evolves_to'][0]['evolves_to'][0]['species'].name
+    // Falls sie noch fehlt, laden wir genau diese Kette nach.
+    if (!evolution) {
+        let response = await fetch(path);
+
+        if (!response.ok) {
+            throw new Error("Entwicklung konnte nicht geladen werden.");
+        }
+
+        evolution = await response.json();
+        pokemonsEvuloutions.push(evolution);
+    }
+
+    return evolution;
+}
+
+// Gibt die Bild-URL für einen englischen Pokémon-Namen zurück.
+async function getEvolutionPicture(name) {
+    let pokemon = pokemonsBasic.find(pokemon => pokemon.name === name);
+
+    if (!pokemon) {
+        let response = await fetch(
+            `https://pokeapi.co/api/v2/pokemon/${name}`
+        );
+
+        if (!response.ok) {
+            throw new Error("Entwicklungsbild konnte nicht geladen werden.");
+        }
+
+        pokemon = await response.json();
+    }
+
+    return pokemon.sprites.other.dream_world.front_default
+        || pokemon.sprites.front_default
+        || "./scr/assets/icons/pokemon1.svg";
+}
+
+// Lädt die Entwicklung und zeigt das fertige HTML im Dialog an.
+async function showPokemonEvolution(indexPokemons) {
+    const evolutionStepsRef = document.getElementById('evolution_steps');
+    evolutionStepsRef.textContent = "Entwicklung wird geladen …";
+
+    try {
+        let evolution = await getPokemonEvolution(indexPokemons);
+        let html = await getEvolutionHtml(evolution.chain);
+
+        // Nur einfügen, wenn dieser Dialoginhalt noch auf der Seite ist.
+        if (evolutionStepsRef.isConnected) {
+            evolutionStepsRef.innerHTML = html;
+        }
+    } catch (error) {
+        if (evolutionStepsRef.isConnected) {
+            evolutionStepsRef.textContent =
+                "Entwicklung konnte nicht geladen werden.";
+        }
+
+        console.error(error);
+    }
+}
+
+// Bekommt die erste Stufe und gibt das HTML für die gesamte Kette zurück.
+async function getEvolutionHtml(chain) {
+    let currentStep = chain;
+    let html = "";
+    let indexStep = 0;
+
+    while (currentStep) {
+        let name = currentStep.species.name;
+        let picture = await getEvolutionPicture(name);
+        let levelText = getEvolutionLevelText(currentStep, indexStep);
+
+        html += renderEvolutionCard(name, picture, levelText);
+
+        // Wenn keine nächste Stufe vorhanden ist, endet die Schleife.
+        currentStep = currentStep.evolves_to[0];
+        indexStep++;
+    }
+
+    return html;
+}
+
+// Bekommt eine Entwicklungsstufe und ihre Position innerhalb der Kette.
+function getEvolutionLevelText(step, indexStep) {
+    if (indexStep === 0) {
+        return "Grundform";
+    }
+
+    let level = step.evolution_details[0]?.min_level;
+
+    if (level != null) {
+        return `Level ${level}`;
+    }
+
+    return "Besondere Bedingung";
+}

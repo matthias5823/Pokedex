@@ -6,3 +6,5 @@ let pokemonsTypes = [];
 
 let pokemonsEvuloutionsChain = [];
 
+let pokemonsEvuloutions = [] ;
+

@@ -1,24 +1,24 @@
-function renderOverlayCard() {
+function renderOverlayCard(indexPokemons, id, nameDe, nameEn, scrPic, lastName, nextName, typeName) {
     return `    
         
-            <header class="overlay-card-header">
+            <header class="overlay-card-header bg-card-${typeName}">
                 <i id="pokemon_id_section" class="pokemon-id-section"># <span id="pokemon_id_number"
-                        pokemon-id-number>1</span></i>
+                        pokemon-id-number>${id}</span></i>
                 <img class="overlay-card-pic"
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
-                    alt="Pokemonbild von ${name}">
-                <div class="">
-                    <h2>Bulbasaur</h2>
-                    <p>Bulbasaur</p>
+                    src="${scrPic}"
+                    alt="Pokemonbild von ${nameEn} / ${nameDe}">
+                <div class="overlay-headline">
+                    <h2>${nameEn}</h2>
+                    <p>${nameDe}</p>
                 </div>
             </header>
             <nav class="tabs" role="tablist">
-                <button role="tab" class="tab " data-ziel="description">Beschreibung</button>
-                <button role="tab" class="tab activ" data-ziel="basic_values">Basiswerte</button>
+                <button role="tab" class="tab activ" data-ziel="description">Beschreibung</button>
+                <button role="tab" class="tab " data-ziel="basic_values">Basiswerte</button>
                 <button role="tab" class="tab " data-ziel="evolution">Entwicklung</button>
             </nav>
             <section>
-                <section id="description" class="content-card-section">
+                <section id="description" class="content-card-section activ">
                     <header class="content-card-section-header">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -55,7 +55,7 @@ function renderOverlayCard() {
 
                 </section>
 
-                <section id="basic_values" class="content-card-section activ">
+                <section id="basic_values" class="content-card-section">
                     <header class="content-card-section-header">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -67,7 +67,7 @@ function renderOverlayCard() {
                         </svg>
                         <h3>Basiswerte</h3>
                     </header>
-                    <section class="basicvalues-card-section">
+                    <section id="basicvalues_card_section" class="basicvalues-card-section">
                         <div class="basicvalues-card-content">
                             <p>HP</p>
                             <p>45</p>
@@ -169,7 +169,7 @@ function renderOverlayCard() {
             </section>
 
             <div class="navigation-picture">
-                <button><svg class="btn-forward" viewBox="-4 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                <button aria-label="vorheriges Pokemon" onclick="lastPokemon(${indexPokemons})"><svg class="btn-forward" viewBox="-4 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Free-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -182,8 +182,8 @@ function renderOverlayCard() {
                             </g>
                         </g>
                     </svg></button>
-                <p><span>pokemon</span> / <span>pokemon</span></p>
-                <button><svg class="btn-forward" viewBox="-4 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                <p><span>${lastName}</span> / <span>${nextName}</span></p>
+                <button aria-label="nächstes Pokemon" onclick="nextPokemon(${indexPokemons})"><svg class="btn-forward" viewBox="-4 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Free-Icons" stroke="none" stroke-width="1" fill="none">
                             <g transform="translate(-751.000000, -674.000000)" id="Group" stroke="#000000" stroke-width="2">

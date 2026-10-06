@@ -15,7 +15,7 @@
     <script src="./scr/js/script.js" defer></script>
 
 </head>
-
+<img src="./scr/assets/icons/pokemon-svgrepo-com (1).svg" alt="">
 <body onload="init()">
 
     <dialog open class="overlay-card" closedby="any">
@@ -24,7 +24,8 @@
                     pokemon-id-number>1</span></i>
             <img class="overlay-card-pic"
                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
-                alt="Pokemonbild von ${name}">
+                alt="Pokemonbild von ${name}"
+                onerror="this.onerror=null; this.scr='./scr/assets/icons/pokemon1.svg'">
             <div class="">
                 <h2>Bulbasaur</h2>
                 <p>Bulbasaur</p>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pokedex</title>
     <link rel="stylesheet" href="./scr/style/components/variables.css">
     <link rel="stylesheet" href="./scr/style/style.css">
     <link rel="stylesheet" href="./scr/style/components/landing-card.css">
@@ -24,8 +24,17 @@
         <div>
 
         </div>
-        <input type="text" placeholder="🔎 Name oder ID">
+        <input id="search_pokemon" type="search" placeholder="🔎 Name oder ID" oninput="searchPokemon()" aria-label="Pokémon nach englischem Namen oder ID suchen" aria-describedby="search_message">
     </header>
+
+    <p id="search_message" role="status" hidden></p>
+
+    <div id="loading_spinner" role="status" hidden>
+        <div class="loading-track" aria-hidden="true">
+            <img class="loading-pokemon" src="./scr/assets/icons/pokemon1.svg" alt="" width="48" height="48">
+        </div>
+        <p>Pokémon werden geladen …</p>
+    </div>
 
     <main id="contnet_card" class="content-card">
 
@@ -33,7 +42,7 @@
 
     <dialog id="dialog_card" class="overlay-card" closedby="any"></dialog>
 
-<button onclick="startUpload ()">die nächsten bitte</button>
+<button id="load_pokemons_button" onclick="startUpload ()">die nächsten bitte</button>
     <footer>
 
     </footer>
